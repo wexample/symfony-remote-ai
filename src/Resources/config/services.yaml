@@ -1,0 +1,12 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    # The providers' clients are set by the extension, by key.
+    Wexample\SymfonyRemoteAi\Service\RemoteAiProviderRegistry:
+        public: true
+        arguments:
+            $clients: ~
+            $types: []
