@@ -8,6 +8,7 @@ use Symfony\Component\DependencyInjection\Reference;
 use Wexample\PhpRemoteAi\Class\AnthropicClient;
 use Wexample\PhpRemoteAi\Class\OllamaClient;
 use Wexample\PhpRemoteAi\Class\OpenAiClient;
+use Wexample\PhpRemoteAi\Class\TabPfnClient;
 use Wexample\SymfonyHelpers\DependencyInjection\AbstractWexampleSymfonyExtension;
 use Wexample\SymfonyRemote\DependencyInjection\WexampleSymfonyRemoteExtension;
 use Wexample\SymfonyRemoteAi\Service\RemoteAiProviderRegistry;
@@ -22,6 +23,7 @@ class WexampleSymfonyRemoteAiExtension extends AbstractWexampleSymfonyExtension
         Configuration::TYPE_OPENAI_COMPATIBLE => OpenAiClient::class,
         Configuration::TYPE_ANTHROPIC => AnthropicClient::class,
         Configuration::TYPE_OLLAMA => OllamaClient::class,
+        Configuration::TYPE_TABPFN => TabPfnClient::class,
     ];
 
     private const array LABELS = [
@@ -29,6 +31,7 @@ class WexampleSymfonyRemoteAiExtension extends AbstractWexampleSymfonyExtension
         Configuration::TYPE_OPENAI_COMPATIBLE => 'OpenAI-compatible',
         Configuration::TYPE_ANTHROPIC => 'Anthropic',
         Configuration::TYPE_OLLAMA => 'Ollama',
+        Configuration::TYPE_TABPFN => 'TabPFN',
     ];
 
     /**

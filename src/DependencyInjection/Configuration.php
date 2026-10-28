@@ -16,18 +16,23 @@ class Configuration implements ConfigurationInterface
 
     public const string TYPE_OLLAMA = 'ollama';
 
+    /** Prior Labs' TabPFN api: tabular prediction. */
+    public const string TYPE_TABPFN = 'tabpfn';
+
     /** Where each type answers when the provider names no url of its own; null, a url is required. */
     public const array BASE_URLS = [
         self::TYPE_OPEN_AI => 'https://api.openai.com/v1',
         self::TYPE_OPENAI_COMPATIBLE => null,
         self::TYPE_ANTHROPIC => 'https://api.anthropic.com/v1',
         self::TYPE_OLLAMA => null,
+        self::TYPE_TABPFN => 'https://api.priorlabs.ai',
     ];
 
     /** The types that answer nothing without a key. */
     public const array API_KEY_REQUIRED = [
         self::TYPE_OPEN_AI,
         self::TYPE_ANTHROPIC,
+        self::TYPE_TABPFN,
     ];
 
     public function getConfigTreeBuilder(): TreeBuilder
@@ -37,7 +42,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('providers')
-                    ->info('The AI providers the app reads models from, by key: `open_ai`, `ollama`, `mistral`…')
+                    ->info('The AI providers the app reads models from, by key: `open_ai`, `ollama`, `mistral`, `tabpfn`…')
                     ->useAttributeAsKey('key')
                     ->arrayPrototype()
                         ->children()
