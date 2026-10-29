@@ -19,6 +19,9 @@ class Configuration implements ConfigurationInterface
     /** Prior Labs' TabPFN api: tabular prediction. */
     public const string TYPE_TABPFN = 'tabpfn';
 
+    /** TypeSafe AI's api: Jev, typed decisions with their probabilities. */
+    public const string TYPE_TYPESAFE = 'typesafe';
+
     /** Where each type answers when the provider names no url of its own; null, a url is required. */
     public const array BASE_URLS = [
         self::TYPE_OPEN_AI => 'https://api.openai.com/v1',
@@ -26,6 +29,7 @@ class Configuration implements ConfigurationInterface
         self::TYPE_ANTHROPIC => 'https://api.anthropic.com/v1',
         self::TYPE_OLLAMA => null,
         self::TYPE_TABPFN => 'https://api.priorlabs.ai',
+        self::TYPE_TYPESAFE => 'https://api.typesafe.ai/v1',
     ];
 
     /** The types that answer nothing without a key. */
@@ -33,6 +37,7 @@ class Configuration implements ConfigurationInterface
         self::TYPE_OPEN_AI,
         self::TYPE_ANTHROPIC,
         self::TYPE_TABPFN,
+        self::TYPE_TYPESAFE,
     ];
 
     public function getConfigTreeBuilder(): TreeBuilder
@@ -42,7 +47,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
                 ->arrayNode('providers')
-                    ->info('The AI providers the app reads models from, by key: `open_ai`, `ollama`, `mistral`, `tabpfn`…')
+                    ->info('The AI providers the app reads models from, by key: `open_ai`, `ollama`, `mistral`, `tabpfn`, `typesafe`…')
                     ->useAttributeAsKey('key')
                     ->arrayPrototype()
                         ->children()
