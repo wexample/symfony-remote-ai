@@ -2,7 +2,7 @@ domain: symfony-remote-ai.wex
 global:
   name: symfony-remote-ai
   type: php-package
-  version: 3.0.1
+  version: 4.0.0
 wex:
   migration: 1
   version: 6.0.179
