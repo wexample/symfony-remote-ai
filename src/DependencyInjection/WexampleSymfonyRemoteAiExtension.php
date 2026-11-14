@@ -49,18 +49,16 @@ class WexampleSymfonyRemoteAiExtension extends AbstractWexampleSymfonyExtension
         $clients = [];
 
         foreach ($config['providers'] as $key => $provider) {
-            $clients[self::CLIENT_PREFIX.$key] = array_filter([
+            $clients[self::CLIENT_PREFIX.$key] = [
                 'class' => self::CLIENT_CLASSES[$provider['type']],
                 'label' => self::LABELS[$provider['type']].' ('.$key.')',
                 'base_url' => $provider['base_url'] ?? Configuration::BASE_URLS[$provider['type']],
                 'api_key' => $provider['api_key'],
                 'api_key_required' => in_array($provider['type'], Configuration::API_KEY_REQUIRED, true),
-            ], static fn (mixed $value): bool => null !== $value);
+            ];
         }
 
-        if ([] !== $clients) {
-            $container->prependExtensionConfig('wexample_symfony_remote', ['clients' => $clients]);
-        }
+        WexampleSymfonyRemoteExtension::prependClients($container, $clients);
     }
 
     public function load(
