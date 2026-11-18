@@ -1,7 +1,7 @@
 {
   "name": "wexample/symfony-remote-ai",
   "description": "The AI providers of a Symfony app — OpenAI and the services speaking its api, Anthropic, Ollama —, declared as symfony-remotes, their models asked through php-remote-ai",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "type": "library",
   "license": "MIT",
   "autoload": {
@@ -13,6 +13,6 @@
     "php": ">=8.5",
     "wexample/php-remote-ai": ">=4.0.0",
     "wexample/symfony-helpers": ">=19.3.0",
-    "wexample/symfony-remote": ">=2.3.0"
+    "wexample/symfony-remote": ">=2.4.0"
   }
 }
